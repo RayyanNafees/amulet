@@ -23,5 +23,5 @@ AMU class management application to aid students with their studies & assignment
 - **Frontend**:   Solid.js
 - **Backend**:    Astro + Firebase (Using Partytown Web Workers)
 - **Styling**:    UnoCSS
-- **UI Library**: [Material UI](https://suid.io/getting-started/usage)
+- **UI Library**: [Material UI](https://suid.io/getting-started/usage) & [UIverse](https://uiverse.io/spotlight)
 - **App State**:  nanostores
