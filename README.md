@@ -9,5 +9,3 @@ AMU class management application to aid students with their studies & assignment
 - **Backend**:    [Firebase](https://docs.expo.dev/guides/using-firebase/)
 - **Styling**:    [Tailwind](https://www.nativewind.dev/quick-starts/expo)
 - **UI Library**: [Mateial Design](https://callstack.github.io/react-native-paper/docs/components/ActivityIndicator)
-
-
