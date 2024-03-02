@@ -11,10 +11,10 @@ AMU class management application to aid students with their studies & assignment
 - **UI Library**: [Mateial Design](https://callstack.github.io/react-native-paper/docs/components/ActivityIndicator)
 
 ## Aspirations:
-Will be implemented whatever can be done in 48 hours:
+Will be implemented whatever can be done in 36 hours:
 - Offline Note, topic wise saved
 - Stores the voice recording of the professor lectures + White board screenshots for the student to revise
-- E-attendance based on Location of the attendee whether he was at the class location coordination at the time of period while giving the attendance
+- E-attendance based on Location of the attendee whether he was at the class location coordinates at the time of period while giving the attendance
 - Shows which Class will host the next lecture & when (+based on location tells how much mins it will take to reach there)
 - Reminds the user to revise short notes of the previous topic done by the class via notifications before the lecture
 - Schedules H.W Questions + Assignment deadline for the students updated by CR with their answers released the day before deadline
