@@ -1,0 +1,31 @@
+---
+import '@picocss/pico'
+interface Props {
+  title?: string
+  head?: string
+  nomargin?: boolean
+}
+
+const { title = 'AMUlet', head = null, nomargin = false } = Astro.props
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>{title}</title>
+    {head}
+  </head>
+  <body>
+    {
+      nomargin ? (
+        <slot />
+      ) : (
+        <main class='container'>
+          <slot />
+        </main>
+      )
+    }
+  </body>
+</html>
