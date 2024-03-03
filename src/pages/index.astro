@@ -1,6 +1,12 @@
 ---
+import pb from '@/lib/pb'
 import Base from '@/layouts/Base.astro'
+if (!pb.authStore.model) return Astro.redirect('/signin')
+const user = pb.authStore.model
 ---
+
 <Base>
-	Hello World
+  <article>
+    {user}
+  </article>
 </Base>

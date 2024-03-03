@@ -1,0 +1,21 @@
+---
+import Base from '@/layouts/Base.astro'
+import SigninForm from '@/components/SigninForm'
+import pb from '@/lib/pb'
+
+if (Astro.request.method === 'POST') {
+  const data = await Astro.request.formData()
+  const enroll = data.get('enroll')
+  const phone = data.get('phone')
+  const pass = data.get('password')
+}
+---
+
+
+<Base>
+  <hgroup>
+    <h1>Register to Amulet</h1>
+    <h2>Already have an account ? <a href='/signin'>Signin</a></h2>
+  </hgroup>
+  <SigninForm />
+</Base>
