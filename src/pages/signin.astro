@@ -1,0 +1,58 @@
+---
+import Base from '@/layouts/Base.astro'
+import SigninForm from '@/components/SigninForm'
+import pb from '@/lib/pb'
+import { z } from 'astro/zod'
+import { ClientResponseError } from 'pocketbase'
+
+let error = undefined
+
+const faculty = Astro.url.searchParams.get('faculty')
+console.log('Faculty', faculty)
+const isStudent = !faculty
+
+if (Astro.request.method === 'POST') {
+  const data = await Astro.request.formData()
+  const enroll = data.get('enroll')
+  const email = data.get('email')
+  const pass = data.get('password')
+  const userSchema = z.object({
+    enroll: z.string().length(6),
+    pass: z.string().min(8),
+    email: z.string().email(),
+  })
+
+  const user = userSchema.parse({ enroll, pass, email })
+  try {
+    const auth = await pb
+      .collection('students')
+      .authWithPassword(user.email, user.pass)
+    console.log(auth)
+  } catch (e) {
+    if (e instanceof ClientResponseError) error = e.response.message
+  }
+
+  // alert('logged in')
+}
+---
+
+<Base>
+  <hgroup>
+    <h1>Sign in to Amulet</h1>
+    <h2>New to Amulet ? <a href='/register'>Create an account</a></h2>
+  </hgroup>
+  <article class='pt-0'>
+    <div role='group' style={{ width: '105%', transform: 'translateX(-2.5%)' }}>
+      <a role="button" class={isStudent ? 'primary' : 'secondary'} href={Astro.url.origin+'?student=true'}> Student </a>
+      <a role="button" class={!isStudent ? 'primary' : 'secondary'} href={`${Astro.url.pathname}?faculty=true`}> Faculty </a>
+    </div>
+    <form action='/signin' method='POST'>
+      <small class='text-red'>{error}</small>
+      <input name='enroll' placeholder='Enrollment No' required />
+      <input name='email' placeholder='email' type='email' required />
+      <input type='password' name='password' placeholder='Password' required />
+      <small>Minimum 8 characters</small>
+      <input type='submit' value='Login' />
+    </form>
+  </article>
+</Base>
