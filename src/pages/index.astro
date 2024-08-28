@@ -1,20 +1,30 @@
 ---
-
-import { ShoelaceHeader } from "astrolace:components/header";
-import { ViewTransitions } from "astro:transitions";
+import Base from "@/layouts/base.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-    	<ViewTransitions />
-		<ShoelaceHeader />
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base>
+
+<div class="mx-auto max-w-md space-y-4">
+  <p class="text-3xl font-thin">CollegeMate</p>
+  <div>Next Class</div>
+  <div class="rounded-lg bg-neutral-200 px-2 py-5 text-3xl">Electronics Lab</div>
+  <div>ML -5</div>
+  <div>Starts in: <span>8:00</span></div>
+  <div>12 mins</div>
+  <div class="space-y-3">
+    <div class="group flex items-center justify-between gap-2 rounded-full bg-sky-900 p-1 px-3 text-sky-300">
+      Yesterday's Topic
+      <span class="transition-transform group-hover:rotate-180">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6l-6-6z" /></svg>
+      </span>
+    </div>
+    <div class="group flex items-center justify-between gap-2 rounded-full bg-orange-900 p-1 px-3 text-orange-400">
+      Today's Topic
+      <span class="transition-transform group-hover:rotate-180">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6l-6-6z" /></svg>
+      </span>
+    </div>
+  </div>
+</div>
+
+</Base>
