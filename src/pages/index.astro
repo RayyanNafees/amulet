@@ -1,5 +1,7 @@
 ---
 
+import { ShoelaceHeader } from "astrolace:components/header";
+import { ViewTransitions } from "astro:transitions";
 ---
 
 <html lang="en">
@@ -9,6 +11,8 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
+    	<ViewTransitions />
+		<ShoelaceHeader />
 	</head>
 	<body>
 		<h1>Astro</h1>
