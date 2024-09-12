@@ -1,0 +1,54 @@
+---
+// import IconLayout from "@/components/icons/IconLayout.astro";
+import DashboardLayout from "../../layouts/DashboardLayout.astro";
+import AiChat from "./ai/chat";
+// import Dietecian from "@/components/icons/dietecian.astro";
+// import Clinic from "@/components/icons/clinic.astro";
+// import Pharmacy from "@/components/icons/pharmacy.astro";
+// import Physio from "@/components/icons/physio.astro";
+// import Psycho from "@/components/icons/psycho.astro";
+// import Physio2 from "@/components/icons/physio2.astro";
+---
+
+<DashboardLayout>
+  <main>
+    <!-- <div
+      class="text-sm text-nowrap p-4 pb-0 font-bold text-neutral-500 uppercase"
+    >
+      Recent Visits
+    </div> -->
+    <div
+      class="text-md text-nowrap p-4 pl-0 pb-2 font-bold text-neutral-500 uppercase"
+    >
+      Services
+    </div>
+    <nav class="grid grid-cols-3 gap-8 my-4">
+      <!-- <IconLayout label="dietecian">
+        <Dietecian />
+      </IconLayout>
+      <IconLayout label="clinic">
+        <Clinic />
+      </IconLayout>
+      <IconLayout label="pharmacy">
+        <Pharmacy />
+      </IconLayout>
+      <IconLayout label="physio">
+        <Physio />
+      </IconLayout>
+      <IconLayout label="psycho">
+        <Psycho />
+      </IconLayout>
+      <IconLayout label="ICU">
+        <Physio2 />
+      </IconLayout> -->
+    </nav>
+
+    <!-- <div
+      class="text-md text-nowrap p-4 pl-0 pb-2 font-bold text-neutral-500 uppercase"
+    >
+      Hospitals
+    </div> -->
+
+    <AiChat client:idle />
+  </main>
+</DashboardLayout>
