@@ -1,3 +1,5 @@
+export const baseURL = 'https://amulet.pockethost.io'
+
 export const post = (
 	url: string,
 	data: Record<string, string>,

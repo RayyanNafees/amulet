@@ -10,6 +10,6 @@ const isUrl = (txt: string) => {
 	}
 };
 
-export const pb = new Pocketbase(import.meta.env.POCKETBASE_BASE_URL);
+export const pb = new Pocketbase(import.meta.env.POCKETBASE_BASE_URL || 'https://amulet.pockethost.io');
 export const pdfile = (record: NotesResponse) =>
 	`${import.meta.env.POCKETBASE_BASE_URL}/api/files/${record.collectionId}/${record.id}/${record.pdf}`;

@@ -8,7 +8,7 @@ export default {
 	theme: {
 		extend: {},
 	},
-	plugins: [require("@tailwindcss/forms"), addIconSelectors(['mdi']),],
+	plugins: [require("@tailwindcss/forms"), addIconSelectors(['mdi']),require('rippleui')],
 	rippleui: {
 		removeThemes: ["dark", ],
 	},
