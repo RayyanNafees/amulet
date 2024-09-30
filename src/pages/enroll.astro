@@ -1,0 +1,39 @@
+---
+import * as v from "valibot";
+
+let data = "No data";
+import Base from "@/layouts/base.astro";
+
+if (Astro.request.method === "POST") {
+  const fd = await Astro.request.formData();
+  const enrollment = v.parse(v.pipe(v.string(), v.length(6)), fd.get("enroll"));
+
+  console.log(enrollment);
+
+  data = await fetch(`/api/user/info/${enrollment}`).then((r) => r.text());
+}
+---
+
+<Base min>
+  <main class="block min-h-screen container text-center mx-auto">
+    <form
+      method="POST"
+      action="/enroll"
+      class="my-10 p-10 rounded-md shadow-md bg-sky-200"
+    >
+      <p>
+        <input
+          name="enroll"
+          class="border-2"
+          placeholder="Enter your enrollment number"
+        />
+      </p>
+      <button class="px-4 py-2 rounded bg-sky-600 text-white">Fetch</button>
+    </form>
+    <output class="my-10 border-2 p-10 rounded-lg border-orange-900">
+      <label>Output:</label>
+      <!-- <br /> -->
+      {data}
+    </output>
+  </main>
+</Base>

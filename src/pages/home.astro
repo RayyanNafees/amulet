@@ -1,30 +1,175 @@
 ---
-import Base from "@/layouts/base.astro";
+import { $subjects, $user, type Subject } from "@/stores/user";
+import HomeLayout from "../layouts/HomeLayout.astro";
+import { colors, type TWColor } from "@/stores/twcolors";
+
+let usedColor: TWColor[] = [];
+
+const classes: Record<TWColor, `border-${TWColor}-400 text-${TWColor}-500`> = {
+  slate: "border-slate-400 text-slate-500",
+  zinc: "border-zinc-400 text-zinc-500",
+  gray: "border-gray-400 text-gray-500",
+  neutral: "border-neutral-400 text-neutral-500",
+  stone: "border-stone-400 text-stone-500",
+  red: "border-red-400 text-red-500",
+  green: "border-green-400 text-green-500",
+  emerald: "border-emerald-400 text-emerald-500",
+  lime: "border-lime-400 text-lime-500",
+  orange: "border-orange-400 text-orange-500",
+  yellow: "border-yellow-400 text-yellow-500",
+  fuchsia: "border-fuchsia-400 text-fuchsia-500",
+  sky: "border-sky-400 text-sky-500",
+  blue: "border-blue-400 text-blue-500",
+  teal: "border-teal-400 text-teal-500",
+  amber: "border-amber-400 text-amber-500",
+  cyan: "border-cyan-400 text-cyan-500",
+  indigo: "border-indigo-400 text-indigo-500",
+  violet: "border-violet-400 text-violet-500",
+  purple: "border-purple-400 text-purple-500",
+  pink: "border-pink-400 text-pink-500",
+  rose: "border-rose-400 text-rose-500",
+};
+
+const randClr = () => {
+  if (usedColor.length === colors.length) usedColor = [];
+
+  const clr = colors[Math.floor(Math.random() * colors.length)];
+  if (usedColor.includes(clr)) {
+    return randClr();
+  }
+  usedColor.push(clr);
+  return clr;
+};
+
+const user = $user.get();
+const subjects = $subjects.get();
+
+const isMainSubject = (s: Subject) =>
+  s.mode === "a" && !s.subject.toLowerCase().includes("lab");
+const isMainLab = (s: Subject) =>
+  s.mode === "a" && s.subject.toLowerCase().includes("lab");
+const isBacklogSubject = (s: Subject) =>
+  s.mode !== "a" && !s.subject.toLowerCase().includes("lab");
+const isBacklogLab = (s: Subject) =>
+  s.mode !== "a" && s.subject.toLowerCase().includes("lab");
+
+const nth = (n: number) =>
+  n === 1 ? "1st" : n === 2 ? "2nd" : n === 3 ? "3rd" : `${n}th`;
 ---
 
-<Base>
+<HomeLayout>
+  <div class="container flex items-center justify-between">
+    <span class="text-sm font-semibold text-slate-500">
+      Welcome, <span class="capitalize">{user.name}</span></span
+    >
+    <span class="text-xs font-light text-slate-500"
+      >{user.course} {nth(+user.year)} Year, {user.faculty}</span
+    >
+  </div>
 
-<div class="mx-auto max-w-md space-y-4">
-  <p class="text-3xl font-thin">CollegeMate</p>
-  <div>Next Class</div>
-  <div class="rounded-lg bg-neutral-200 px-2 py-5 text-3xl">Electronics Lab</div>
-  <div>ML -5</div>
-  <div>Starts in: <span>8:00</span></div>
-  <div>12 mins</div>
-  <div class="space-y-3">
-    <div class="group flex items-center justify-between gap-2 rounded-full bg-sky-900 p-1 px-3 text-sky-300">
-      Yesterday's Topic
+  <div class="my-4 text-sm font-semibold uppercase text-slate-500">
+    SUBJECTS
+  </div>
+  <div class="ml-2 grid grid-cols-2 gap-4">
+    {
+      subjects.filter(isMainSubject).map((sub) => {
+        const clr = randClr();
+        return (
+          <div
+            class={`overflow-x-hidden overflow-ellipsis text-nowrap rounded border-2 ${classes[clr]} px-2 py-1`}
+          >
+            {sub.subject}
+            <div class="text-xs font-light">{sub.code}</div>
+          </div>
+        );
+      })
+    }
+  </div>
+  <div
+    class="group ml-4 mt-4 rounded-2xl border-2 border-slate-400 p-1 px-3 text-slate-500"
+  >
+    <div class="flex items-center justify-between">
+      Backlog Subjects
       <span class="transition-transform group-hover:rotate-180">
-        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6l-6-6z" /></svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-6"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6l-6-6z"
+          >
+          </path>
+        </svg>
       </span>
     </div>
-    <div class="group flex items-center justify-between gap-2 rounded-full bg-orange-900 p-1 px-3 text-orange-400">
-      Today's Topic
-      <span class="transition-transform group-hover:rotate-180">
-        <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6l-6-6z" /></svg>
-      </span>
+    <div class="hidden grid-cols-2 gap-4 py-4 group-hover:grid">
+      {
+        subjects.filter(isBacklogSubject).map((sub) => {
+          const clr = randClr();
+          return (
+            <span
+              class={`overflow-x-hidden overflow-ellipsis text-nowrap rounded border-2  ${classes[clr]} px-2 py-1`}
+            >
+              {sub.subject}
+              <div class="text-xs font-light">{sub.code}</div>
+            </span>
+          );
+        })
+      }
     </div>
   </div>
-</div>
 
-</Base>
+  <div class="my-4 text-sm font-semibold uppercase text-slate-500">Labs</div>
+  <div class="ml-2 grid grid-cols-2 gap-4">
+    {
+      subjects.filter(isMainLab).map((sub) => {
+        const clr = randClr();
+        return (
+          <div
+            class={`overflow-x-hidden overflow-ellipsis text-nowrap rounded border-2  ${classes[clr]} px-2 py-1`}
+          >
+            {sub.subject}
+            <div class="text-xs font-light">{sub.code}</div>
+          </div>
+        );
+      })
+    }
+  </div>
+  <div
+    class="group ml-4 mt-4 rounded-2xl border-2 border-slate-400 p-1 px-3 text-slate-500"
+  >
+    <div class="flex items-center justify-between">
+      Backlog Subjects
+      <span class="transition-transform group-hover:rotate-180">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="size-6"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6l-6-6z"
+          >
+          </path>
+        </svg>
+      </span>
+    </div>
+    <div class="hidden grid-cols-2 gap-4 py-4 group-hover:grid">
+      {
+        subjects.filter(isBacklogLab).map((sub) => {
+          const clr = randClr();
+          return (
+            <span
+              class={`overflow-x-hidden overflow-ellipsis text-nowrap rounded border-2  ${classes[clr]} px-2 py-1`}
+            >
+              {sub.subject}
+              <div class="text-xs font-light">{sub.code}</div>
+            </span>
+          );
+        })
+      }
+    </div>
+  </div>
+</HomeLayout>

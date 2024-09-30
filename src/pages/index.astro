@@ -1,85 +1,49 @@
 ---
-import Layout from "../layouts/header.astro";
+import { $user } from "@/stores/user";
+import Base from "../layouts/base.astro";
+const data = $user.get()
+
+console.log(data)
+
+if (data.name) return Astro.redirect("/home");
 ---
 
-<Layout>
-  <div class="divide-y divide-gray-300/50">
-    <div class="space-y-6 py-8 text-base leading-7 text-gray-600">
-      <p>A platform for connecting hospitals & patients:</p>
-      <ul class="space-y-4">
-        <li class="flex items-center">
-          <svg
-            aria-hidden="true"
-            class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <circle cx="12" cy="12" r="11"></circle>
-            <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none"
-            ></path>
-          </svg>
-          <p class="ml-4">
-            Manage
-            <span class="text-sm font-semibold text-gray-900"> ICU beds </span>
-            with ease
-          </p>
-        </li>
-        <li class="flex items-center">
-          <svg
-            aria-hidden="true"
-            class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <circle cx="12" cy="12" r="11"></circle>
-            <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none"
-            ></path>
-          </svg>
-          <p class="ml-4">
-            Handle
-            <span class="text-sm font-semibold text-gray-900"> Patients </span>
-            effectively
-          </p>
-        </li>
-        <li class="flex items-center">
-          <svg
-            aria-hidden="true"
-            class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <circle cx="12" cy="12" r="11"></circle>
-            <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none"
-            ></path>
-          </svg>
-          <p class="ml-4">
-            Know the best
-            <span class="font-semibold text-gray-900">Hospitals</span> to treat you
-          </p>
-        </li>
-      </ul>
-      <p>
-        Reducing the gap between hospitals & patients, know your hospital in an
-        instant
-      </p>
-    </div>
-    <div class="pt-8 text-base font-semibold leading-7">
-      <h3 class="mb-10 text-xl text-gray-900">Let's get started</h3>
-      <div class="flex space-x-4">
-        <p>
-          <a href="/login" class="rounded-md bg-sky-500 p-2 text-neutral-100">
-            Login
-          </a>
-        </p>
-        <p>
-          <a
-            href="/signup"
-            class="rounded-md border-sky-500 border-2 p-2 text-sky-500"
-          >
-            Create New Account
-          </a>
-        </p>
-      </div>
-    </div>
-  </div></Layout
+<Base>
+  <main class="flex min-h-screen flex-col justify-center text-center">
+    <h1 class="text-5xl font-bold text-slate-600">AMULET</h1>
+    <h2 class="text-sm font-semibold text-slate-600">
+      Read in the name of thy Lord☝️
+    </h2>
+    <p class="text-sm font-light text-slate-600 py-8">
+      Your digital study guide as an AMU student
+    </p>
+
+    <form
+      method="POST"
+      action="/api/onboarding"
+      class="mx-4 flex flex-col gap-2 rounded-xl border-2 border-slate-200 p-4 text-start text-slate-600"
+    >
+      <label for="enroll" class="text-xs font-semibold"
+        >Enrollment Number
+      </label>
+      <input
+        type="text"
+        name="enroll"
+        placeholder="GP1824"
+        class="rounded-md border-none bg-slate-100 text-slate-700 font-semibold mb-4"
+      />
+
+      <button
+        type="submit"
+        class="rounded-md bg-slate-600 py-1 font-semibold uppercase text-slate-50"
+        >continue</button
+      >
+    </form>
+  </main>
+  <footer class="fixed bottom-0 text-sm py-2 text-center w-full bg-slate-300">
+    Build with 💔 by <a
+      href="https://github.com/RayyanNafees"
+      class="underline italic">Diggaj</a
+    >
+  </footer></Base
 >

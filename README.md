@@ -2,12 +2,14 @@
 
 ## Tailwind UIs
 
+[Landing Page](https://play.tailwindcss.com/k0ENgkIrYS)
+
 ### ZHCET
 - [Landing - ZHCET](https://play.tailwindcss.com/xIBp8Jxng4)
 
 ### Tution
 
-- [Landing - Tution](https://play.tailwindcss.com/nDNE2QVVLQ)
+- [Landing - Tution](https://play.tailwindcss.com/Xf4eY0hVAG)
 
 ### Home
 

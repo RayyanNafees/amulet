@@ -1,0 +1,18 @@
+---
+import HomeLayout from "../layouts/HomeLayout.astro";
+---
+
+<HomeLayout className="space-y-3">
+  <span class="text-sm font-semibold uppercase text-slate-500">Feedback</span>
+  <form class="space-y-3 rounded-xl border-2 border-slate-200 p-4">
+    <select class="w-full rounded-md border-none bg-slate-200 text-slate-700 accent-slate-500">
+      <option disabled selected>Category</option>
+      <option>🧠 Question</option>
+      <option>✨ Feature Suggestion</option>
+      <option>⚠️ Report an Issue</option>
+    </select>
+    <input type="email" placeholder="Email to receive response in" class="w-full rounded-md border-none bg-slate-200 text-slate-700" />
+    <textarea placeholder="Description" cols="30" rows="4" class="w-full rounded-md border-none bg-slate-200 text-slate-700"></textarea>
+    <button type="submit" class="w-full rounded-md bg-slate-500 py-2 text-center text-sm font-semibold uppercase text-white">submit</button>
+  </form>
+</HomeLayout>

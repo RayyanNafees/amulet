@@ -1,0 +1,83 @@
+---
+import HomeLayout from "../layouts/HomeLayout.astro";
+---
+
+<HomeLayout>
+  <div class="container flex justify-between items-center">
+    <span class="text-sm font-semibold uppercase text-slate-500">Next Class</span>
+    <a href="/scheduel/see-full" class="text-sky-500 underline">Weekly Schedule</a>
+  </div>
+
+  <article class="mt-2 rounded-xl bg-slate-300 px-4 py-2">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-1 rounded-2xl bg-slate-200 p-1 py-0.5 text-green-600">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 24 24"><path fill="currentColor" d="M12 20c4.4 0 8-3.6 8-8s-3.6-8-8-8s-8 3.6-8 8s3.6 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10S2 17.5 2 12S6.5 2 12 2m5 11.9l-.7 1.3l-5.3-2.9V7h1.5v4.4z" /></svg>
+        <span class="-translate-y-0.5">in 15m</span>
+      </div>
+      <div class="flex items-center gap-1 rounded-2xl bg-slate-200 p-1 py-0.5">
+        <img src="https://picsum.photos/30/30" class="size-5 rounded-full" />
+        <span class="w-28 overflow-x-hidden overflow-ellipsis text-nowrap">Dr. Faisal Talib</span>
+      </div>
+    </div>
+
+    <h1 class="overflow-hidden overflow-ellipsis text-nowrap py-4 text-3xl font-semibold">LEAN methods of Automobile Engineers</h1>
+
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-1 rounded-2xl bg-slate-200 px-2 py-0.5 text-slate-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="size-4" viewBox="0 0 24 24"><path fill="currentColor" d="M11.5 1L2 6v2h19V6m-5 4v7h3v-7M2 22h19v-3H2m8-9v7h3v-7m-9 0v7h3v-7z" /></svg>
+        <span class="-translate-y-0.5">ML 10</span>
+      </div>
+      <div class="flex w-32 items-center gap-1 -space-x-3 overflow-x-hidden rounded-2xl bg-slate-200 p-1 py-0.5">
+        <img src="https://picsum.photos/30/30" class="size-5 rounded-full" />
+        <img src="https://picsum.photos/40/40" class="size-5 rounded-full" />
+        <img src="https://picsum.photos/50/50" class="size-5 rounded-full" />
+        <img src="https://picsum.photos/60/60" class="size-5 rounded-full" />
+        <img src="https://picsum.photos/70/70" class="size-5 rounded-full" />
+        <img src="https://picsum.photos/80/80" class="size-5 rounded-full" />
+      </div>
+    </div>
+  </article>
+  <div class="container flex justify-between mt-8 mb-3">
+    <span class="text-sm font-semibold uppercase text-slate-500">Revision</span>
+    <a href="/scheduel/see-full" class="text-sky-500 underline">Syllabus</a>
+  </div>
+  <div class="space-y-5">
+    <div class="group peer gap-2 rounded-2xl bg-sky-900 p-1 px-3 text-sky-300">
+      <div class="flex items-center justify-between">
+        Last Class' Topic
+        <span class="transition-transform group-hover:rotate-180">
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6l-6-6z" /></svg>
+        </span>
+      </div>
+      <div class="hiddens pb-2 text-sky-100 group-hover:block">
+        <ul class="ml-4 list-disc underline">
+          <li><a href="/ai">Poka Yoke</a></li>
+          <li><a href="/ai">VSM diagrams</a></li>
+        </ul>
+        <button class="mt-8 flex items-center gap-1 rounded bg-sky-300 px-3 py-0.5 font-semibold text-sky-900">
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1L9 9l-8 3l8 3l3 8l3-8l8-3l-8-3z" /></svg>
+
+          Revise with AI
+        </button>
+      </div>
+    </div>
+    <div class="group peer gap-2 rounded-2xl bg-orange-900 p-1 px-3 text-orange-400">
+      <div class="flex items-center justify-between">
+        Today's Topic
+        <span class="transition-transform group-hover:rotate-180">
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.58L12 13.17l4.59-4.59L18 10l-6 6l-6-6z" /></svg>
+        </span>
+      </div>
+      <div class="hidden pb-2 text-orange-100 group-hover:block">
+        <ul class="ml-4 list-disc underline">
+          <li><a href="/ai">Poka Yoke</a></li>
+          <li><a href="/ai">VSM diagrams</a></li>
+        </ul>
+        <button class="mt-8 flex items-center gap-1 rounded bg-orange-400 px-3 py-0.5 font-semibold text-orange-900">
+          <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1L9 9l-8 3l8 3l3 8l3-8l8-3l-8-3z" /></svg>
+          Revise with AI
+        </button>
+      </div>
+    </div>
+  </div>
+</HomeLayout>
