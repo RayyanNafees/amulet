@@ -63,7 +63,7 @@ const nth = (n: number) =>
       Welcome, <span class="capitalize">{user.name}</span></span
     >
     <span class="text-xs font-light text-slate-500"
-      >{user.course} {nth(+user.year)} Year, {user.faculty}</span
+      >{user.course} {nth(user?.year || 0)} Year, {user.faculty}</span
     >
   </div>
 
